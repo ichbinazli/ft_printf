@@ -3,8 +3,8 @@ fonksiyonunu içeren bir kütüphane
 
 <table>
       <tr>
-         <td>satır </td>
-         <td>satır 1, sütun 2</td>
+         <td> %c </td>
+         <td> tek bir karakter yazdırır.</td>
       </tr>
       <tr>
          <td>satır 2, sütun 1</td>
