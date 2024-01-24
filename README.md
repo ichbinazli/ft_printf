@@ -35,7 +35,7 @@ fonksiyonunu içeren bir kütüphane
          <td> hexadecimal sayıyı (16 tabanında) büyük harfler ile yazdırır.</td>
       </tr>
   <tr>
-         <td>satır 1, sütun 1</td>
-         <td>satır 1, sütun 2</td>
+         <td> %% </td>
+         <td>yüzde işareti yazdırır.</td>
       </tr>
    </table>
