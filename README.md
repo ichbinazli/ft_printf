@@ -3,7 +3,7 @@ fonksiyonunu içeren bir kütüphane
 
 <table>
       <tr>
-         <td>satır 1, sütun 1</td>
+         <td>satır </td>
          <td>satır 1, sütun 2</td>
       </tr>
       <tr>
