@@ -7,32 +7,32 @@ fonksiyonunu içeren bir kütüphane
          <td> tek bir karakter yazdırır.</td>
       </tr>
       <tr>
-         <td>satır 2, sütun 1</td>
-         <td>satır 2, sütun 2</td>
+         <td> %s </td>
+         <td>bir karakter dizisi yazdırır.</td>
       </tr>
  <tr>
-         <td>satır 1, sütun 1</td>
-         <td>satır 1, sütun 2</td>
+         <td> %p </td>
+         <td>Void * pointer argümanını hexadecimal biçiminde yazdırır.</td>
       </tr>
       <tr>
-         <td>satır 2, sütun 1</td>
-         <td>satır 2, sütun 2</td>
+         <td> %d</td>
+         <td>10 tabanında decimal sayı yazdırır.</td>
       </tr>
  <tr>
-         <td>satır 1, sütun 1</td>
-         <td>satır 1, sütun 2</td>
+         <td> % i</td>
+         <td>10 tabanında integer yazdırır.</td>
       </tr>
       <tr>
-         <td>satır 2, sütun 1</td>
-         <td>satır 2, sütun 2</td>
+         <td> %u </td>
+         <td>10 tabanında işaretsiz decimal sayı yazdırır.</td>
       </tr>
  <tr>
-         <td>satır 1, sütun 1</td>
-         <td>satır 1, sütun 2</td>
+         <td> %x </td>
+         <td>hexadecimal sayıyı (16 tabanında) küçük harfler ile yazdırır.</td>
       </tr>
       <tr>
-         <td>satır 2, sütun 1</td>
-         <td>satır 2, sütun 2</td>
+         <td> %X </td>
+         <td> hexadecimal sayıyı (16 tabanında) büyük harfler ile yazdırır.</td>
       </tr>
   <tr>
          <td>satır 1, sütun 1</td>
