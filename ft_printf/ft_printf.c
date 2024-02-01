@@ -6,11 +6,12 @@
 /*   By: naanapa <naanapa@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:34:44 by naanapa           #+#    #+#             */
-/*   Updated: 2024/01/24 16:28:48 by naanapa          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:25:53 by naanapa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 int	ft_putchar(char c)
 {
@@ -51,6 +52,8 @@ int	ft_printf(const char *str, ...)
 
 	rtn = 0;
 	i = 0;
+	if (write(1, "", 0) == -1)
+		return (-1);
 	va_start(args, str);
 	while (str[i])
 	{

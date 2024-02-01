@@ -6,11 +6,12 @@
 /*   By: naanapa <naanapa@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:31:27 by naanapa           #+#    #+#             */
-/*   Updated: 2024/01/24 16:24:22 by naanapa          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:30:43 by naanapa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 int	ft_print_str(char *str)
 {

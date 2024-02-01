@@ -6,7 +6,7 @@
 /*   By: naanapa <naanapa@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:34:19 by naanapa           #+#    #+#             */
-/*   Updated: 2024/01/24 13:00:39 by naanapa          ###   ########.fr       */
+/*   Updated: 2024/01/30 15:56:32 by naanapa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
 
 int	ft_printf(const char *str, ...);
 int	ft_putchar(char c);
