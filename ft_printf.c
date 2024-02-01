@@ -66,5 +66,6 @@ int	ft_printf(const char *str, ...)
 			rtn += write(1, &str[i], 1);
 		i++;
 	}
+	va_end(args);
 	return (rtn);
 }
