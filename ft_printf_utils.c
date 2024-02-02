@@ -13,79 +13,94 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
+int	ft_putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
 int	ft_print_str(char *str)
 {
 	int	i;
 
-	i = 0;
-	if (!str)
-		return (write(1, "(null)", 6));
-	i = 0;
-	while (str[i])
+	i = -1;
+	if (str == NULL)
 	{
-		write(1, &str[i], 1);
-		i++;
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
+		return (6);
+	}
+	while (str[++i])
+	{
+		if (write(1, &str[i], 1) == -1)
+			return (-1);
 	}
 	return (i);
 }
 
 int	ft_int(int number)
 {
-	int	rtn;
+	int		tmp;
+	int		len;
+	long	n;
 
-	rtn = 0;
-	if (number == 0)
-		return (write(1, "0", 1));
-	if (number == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (number < 0)
+	n = number;
+	len = 0;
+	if (n < 0)
 	{
-		rtn += write(1, "-", 1);
-		number *= -1;
+		if (write(1, "-", 1) == -1)
+			return (-1);
+		len++;
+		n *= -1;
 	}
-	if (number > 9)
-		rtn += ft_int(number / 10);
-	write(1, &"0123456789"[number % 10], 1);
-	return (rtn + 1);
+	if (n >= 10)
+	{
+		tmp = ft_int(n / 10);
+		if (tmp == -1)
+			return (-1);
+		len += tmp;
+	}
+	if (ft_putchar((n % 10) + '0') == -1)
+		return (-1);
+	return (len + 1);
 }
 
 int	ft_u_int(unsigned int number)
 {
-	int	rtn;
+	int	len;
+	int	tmp;
 
-	rtn = 0;
-	if (number > 9)
-		rtn += ft_u_int(number / 10);
-	write(1, &"0123456789"[number % 10], 1);
-	return (rtn + 1);
-}
-
-int	ft_hex_nbr(unsigned int number, char c)
-{
-	int	rtn;
-
-	rtn = 0;
-	if (number > 15)
-		rtn += ft_hex_nbr((number / 16), c);
-	if (c == 'X')
-		write(1, &"0123456789ABCDEF"[number % 16], 1);
-	if (c == 'x')
-		write(1, &"0123456789abcdef"[number % 16], 1);
-	return (rtn + 1);
-}
-
-int	ft_point(unsigned long long a, int sign)
-{
-	int	rtn;
-
-	rtn = 0;
-	if (sign == 1)
+	len = 0;
+	if (number >= 10)
 	{
-		rtn = write(1, "0x", 2);
-		sign = 0;
+		tmp = ft_u_int(number / 10);
+		if (tmp == -1)
+			return (-1);
+		len += tmp;
 	}
-	if (a > 15)
-		rtn += ft_point((a / 16), 0);
-	write(1, &"0123456789abcdef"[a % 16], 1);
-	return (rtn + 1);
+	if (ft_putchar((number % 10) + '0') == -1)
+		return (-1);
+	return (len + 1);
+}
+
+int	ft_hex_nbr(unsigned long long int number, char c)
+{
+	int	tmp;
+	int	len;
+
+	len = 0;
+	if (number > 15)
+	{
+		tmp = ft_hex_nbr(number / 16, c);
+		if (tmp == -1)
+			return (-1);
+		len += tmp;
+	}
+	if (number % 16 < 10)
+	{
+		if (ft_putchar((number % 16) + '0') == -1)
+			return (-1);
+	}
+	else if (ft_putchar((number % 16) + c) == -1)
+		return (-1);
+	return (len + 1);
 }
