@@ -13,11 +13,6 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
-int	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
 int	ft_print_str(char *str)
 {
 	int	i;
@@ -39,27 +34,27 @@ int	ft_print_str(char *str)
 
 int	ft_int(int number)
 {
-	int		tmp;
 	int		len;
+	int		temp;
 	long	n;
 
-	n = number;
 	len = 0;
+	n = number;
 	if (n < 0)
 	{
 		if (write(1, "-", 1) == -1)
 			return (-1);
-		len++;
 		n *= -1;
+		len++;
 	}
-	if (n >= 10)
+	if (n > 9)
 	{
-		tmp = ft_int(n / 10);
-		if (tmp == -1)
+		temp = ft_int(n / 10);
+		if (temp == -1)
 			return (-1);
-		len += tmp;
+		len += temp;
 	}
-	if (ft_putchar((n % 10) + '0') == -1)
+	if (write(1, &"0123456789"[n % 10], 1) == -1)
 		return (-1);
 	return (len + 1);
 }
@@ -67,40 +62,68 @@ int	ft_int(int number)
 int	ft_u_int(unsigned int number)
 {
 	int	len;
-	int	tmp;
+	int	temp;
 
 	len = 0;
-	if (number >= 10)
+	if (number > 9)
 	{
-		tmp = ft_u_int(number / 10);
-		if (tmp == -1)
+		temp = ft_u_int(number / 10);
+		if (temp == -1)
 			return (-1);
-		len += tmp;
+		len += temp;
 	}
-	if (ft_putchar((number % 10) + '0') == -1)
+	if (write(1, &"0123456789"[number % 10], 1) == -1)
 		return (-1);
 	return (len + 1);
 }
 
-int	ft_hex_nbr(unsigned long long int number, char c)
+int	ft_hex_nbr(unsigned int number, char c)
 {
-	int	tmp;
 	int	len;
+	int	temp;
 
 	len = 0;
-	if (number > 15)
+	if (number >= 16)
 	{
-		tmp = ft_hex_nbr(number / 16, c);
-		if (tmp == -1)
+		temp = ft_hex_nbr(number / 16, c);
+		if (temp == -1)
 			return (-1);
-		len += tmp;
+		len += temp;
 	}
-	if (number % 16 < 10)
+	if (c == 'X')
 	{
-		if (ft_putchar((number % 16) + '0') == -1)
+		if (write(1, &"0123456789ABCDEF"[number % 16], 1) == -1)
 			return (-1);
 	}
-	else if (ft_putchar((number % 16) + c) == -1)
+	if (c == 'x')
+	{
+		if (write(1, &"0123456789abcdef"[number % 16], 1) == -1)
+			return (-1);
+	}
+	return (len + 1);
+}
+
+int	ft_point(unsigned long number, int i)
+{
+	int	len;
+	int	temp;
+
+	len = 0;
+	if (i == 1)
+	{
+		if (write(1, "0x", 2) == -1)
+			return (-1);
+		i = 0;
+		len += 2;
+	}
+	if (number >= 16)
+	{
+		temp = ft_point(number / 16, i);
+		if (temp == -1)
+			return (-1);
+		len += temp;
+	}
+	if (write(1, &"0123456789abcdef"[number % 16], 1) == -1)
 		return (-1);
 	return (len + 1);
 }
